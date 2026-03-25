@@ -1,18 +1,28 @@
 import React, { useState } from 'react';
 import './Pages.css';
 
+import f1Banana from '../assets/items/f1_banana.png';
+import f2Strawberry from '../assets/items/f2_strawberry.png';
+import f3Mango from '../assets/items/f3_mango.png';
+import f4Blueberry from '../assets/items/f4_blueberry.png';
+import b1Milk from '../assets/items/b1_milk.png';
+import b2Almond from '../assets/items/b2_almond.png';
+import b3Oat from '../assets/items/b3_oat.png';
+import b4Coconut from '../assets/items/b4_coconut.png';
+import s1NoSugar from '../assets/items/s1_nosugar.png';
+
 const OPTIONS = {
   bases: [
-    { id: 'b1', name: 'Whole Milk', price: 40, icon: '🥛', bgColor: '#fdfbf7' },
-    { id: 'b2', name: 'Almond Milk', price: 60, icon: '🧋', bgColor: '#f5ecd8' },
-    { id: 'b3', name: 'Oat Milk', price: 65, icon: '🌾', bgColor: '#e8ddcb' },
-    { id: 'b4', name: 'Coconut Water', price: 50, icon: '🥥', bgColor: '#e0f7fa' },
+    { id: 'b1', name: 'Whole Milk', price: 40, image: b1Milk, bgColor: '#fdfbf7' },
+    { id: 'b2', name: 'Almond Milk', price: 60, image: b2Almond, bgColor: '#f5ecd8' },
+    { id: 'b3', name: 'Oat Milk', price: 65, image: b3Oat, bgColor: '#e8ddcb' },
+    { id: 'b4', name: 'Coconut Water', price: 50, image: b4Coconut, bgColor: '#e0f7fa' },
   ],
   fruits: [
-    { id: 'f1', name: 'Banana', price: 30, icon: '🍌', bgColor: '#fff9c4' },
-    { id: 'f2', name: 'Strawberry', price: 50, icon: '🍓', bgColor: '#ffcdd2' },
-    { id: 'f3', name: 'Mango', price: 60, icon: '🥭', bgColor: '#ffe082' },
-    { id: 'f4', name: 'Blueberry', price: 70, icon: '🫐', bgColor: '#c5cae9' },
+    { id: 'f1', name: 'Banana', price: 30, image: f1Banana, bgColor: '#fff9c4' },
+    { id: 'f2', name: 'Strawberry', price: 50, image: f2Strawberry, bgColor: '#ffcdd2' },
+    { id: 'f3', name: 'Mango', price: 60, image: f3Mango, bgColor: '#ffe082' },
+    { id: 'f4', name: 'Blueberry', price: 70, image: f4Blueberry, bgColor: '#c5cae9' },
   ],
   sugars: [
     { id: 's1', name: 'No Sugar', price: 0, icon: '🚫', bgColor: '#f5f5f5' },
@@ -71,9 +81,13 @@ export default function BuilderPage({ navigateTo, addToCart }) {
             >
               <div 
                 className="builder-option-img"
-                style={!isSelected ? { backgroundColor: item.bgColor } : {}}
+                style={!isSelected ? { backgroundColor: item.bgColor, padding: item.image ? 0 : '', overflow: 'hidden' } : { padding: item.image ? 0 : '', overflow: 'hidden' }}
               >
-                {item.icon}
+                {item.image ? (
+                  <img src={item.image} alt={item.name} style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%'}} />
+                ) : (
+                  item.icon
+                )}
               </div>
               <span className="builder-option-label">{item.name} <br/>(₹{item.price})</span>
             </div>

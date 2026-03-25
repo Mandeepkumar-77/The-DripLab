@@ -8,9 +8,10 @@ import CheckoutPage from './pages/CheckoutPage';
 import SuccessPage from './pages/SuccessPage';
 import LoginPage from './pages/LoginPage';
 import ProfilePage from './pages/ProfilePage';
+import SplashPage from './pages/SplashPage';
 
 function App() {
-  const [currentPath, setCurrentPath] = useState('login');
+  const [currentPath, setCurrentPath] = useState('splash');
   const [cart, setCart] = useState([]);
   const [user, setUser] = useState(null);
 
@@ -43,7 +44,11 @@ function App() {
 
   const handleLogin = (userData) => {
     setUser(userData);
-    navigateTo('home');
+    if (cart.length > 0) {
+      navigateTo('checkout');
+    } else {
+      navigateTo('home');
+    }
   };
 
   const handleUpdateProfile = (newDetails) => {
@@ -57,7 +62,7 @@ function App() {
   };
 
   // Pages that hide the Header and BottomNav
-  const hideNavigation = currentPath === 'login' || currentPath === 'success';
+  const hideNavigation = currentPath === 'login' || currentPath === 'success' || currentPath === 'splash';
 
   const cartCount = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
 
@@ -66,11 +71,12 @@ function App() {
       {!hideNavigation && <Header cartCount={cartCount} navigateTo={navigateTo} user={user} />}
       
       <main className="main-content">
+        {currentPath === 'splash' && <SplashPage navigateTo={navigateTo} />}
         {currentPath === 'login' && <LoginPage onLogin={handleLogin} />}
         {currentPath === 'profile' && <ProfilePage user={user} onUpdate={handleUpdateProfile} onLogout={handleLogout} />}
         {currentPath === 'home' && <LandingPage navigateTo={navigateTo} addToCart={addToCart} removeFromCart={removeFromCart} cart={cart} />}
         {currentPath === 'builder' && <BuilderPage navigateTo={navigateTo} addToCart={addToCart} />}
-        {currentPath === 'checkout' && <CheckoutPage navigateTo={navigateTo} cart={cart} clearCart={clearCart} />}
+        {currentPath === 'checkout' && <CheckoutPage navigateTo={navigateTo} cart={cart} clearCart={clearCart} user={user} />}
         {currentPath === 'success' && <SuccessPage navigateTo={navigateTo} />}
       </main>
 

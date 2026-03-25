@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import './Pages.css';
 
-export default function CheckoutPage({ navigateTo, cart, clearCart }) {
+export default function CheckoutPage({ navigateTo, cart, clearCart, user }) {
   const [paymentMethod, setPaymentMethod] = useState('upi');
 
   const totalPrice = cart.reduce((sum, item) => sum + (item.price * (item.qty || 1)), 0);
 
   const handleCheckout = () => {
+    if (!user) {
+      navigateTo('login');
+      return;
+    }
     // In a real app we'd process payment here.
     clearCart();
     navigateTo('success');
@@ -85,7 +89,7 @@ export default function CheckoutPage({ navigateTo, cart, clearCart }) {
 
           <div className="pay-now-wrap">
             <button className="btn btn-primary" style={{width: '100%', padding: '1.2rem', fontSize: '1.2rem'}} onClick={handleCheckout}>
-              Pay ₹{totalPrice} & Place Order
+              {user ? `Pay ₹${totalPrice} & Place Order` : 'Sign in to Place Order'}
             </button>
           </div>
         </>

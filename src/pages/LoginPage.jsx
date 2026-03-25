@@ -4,26 +4,11 @@ import './Pages.css';
 export default function LoginPage({ onLogin }) {
   const [email, setEmail] = useState('test@driplab.com');
   const [password, setPassword] = useState('password123');
-  const [transitioning, setTransitioning] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTransitioning(true);
-    setTimeout(() => {
-      onLogin({ name: 'Alex', email, phone: '+1 234 567 8900' });
-    }, 2000);
+    onLogin({ name: 'Alex', email, phone: '+1 234 567 8900' });
   };
-
-  if (transitioning) {
-    return (
-      <div className="success-container">
-        <h1 className="success-title text-primary morph-text" style={{fontSize: '2rem', textAlign: 'center'}}>
-          Welcome to The DripLab Family
-        </h1>
-        <p className="morph-text-delay" style={{marginTop: '1rem', color: 'var(--on-surface-variant)'}}>Getting your menu ready...</p>
-      </div>
-    );
-  }
 
   return (
     <div className="page-container animate-fade-in-up">

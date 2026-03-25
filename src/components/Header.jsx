@@ -1,22 +1,35 @@
 import React from 'react';
 import './Header.css';
+import brandLogoImg from '../assets/logo_driplab.png';
 
 export default function Header({ cartCount, navigateTo, user }) {
   return (
     <header className="header" style={{backgroundColor: 'var(--surface)', borderBottom: '1px solid var(--outline)'}}>
-      <div className="logo" onClick={() => navigateTo('home')} style={{display: 'flex', alignItems: 'center', gap: '4px'}}>
-        <span style={{fontSize: '0.8rem', color: 'var(--on-surface-variant)'}}>©</span>
-        <span className="logo-text brand-logo">The Drip<span className="text-primary">Lab</span></span>
+      <div className="logo" onClick={() => navigateTo('home')} style={{display: 'flex', alignItems: 'center', gap: '0.6rem', cursor: 'pointer'}}>
+        <img src={brandLogoImg} alt="The DripLab Logo" style={{width: '30px', height: '30px', borderRadius: '8px', objectFit: 'cover'}} />
+        <span className="logo-text brand-logo" style={{fontSize: '1.25rem', color: 'var(--on-surface)'}}>
+          The Drip<span className="text-primary">Lab</span>
+        </span>
       </div>
       <div style={{display: 'flex', alignItems: 'center', gap: '1rem'}}>
-        {user && (
-          <div onClick={() => navigateTo('profile')} style={{cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', color: 'var(--on-surface-variant)'}}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{marginBottom: '2px'}}>
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-              <circle cx="12" cy="7" r="4"></circle>
-            </svg>
-            <span style={{fontWeight: 600, fontSize: '0.8rem'}}>{user.name}</span>
+        {user ? (
+          <div onClick={() => navigateTo('profile')} style={{cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.4rem'}}>
+            <div style={{
+              width: '32px', height: '32px', borderRadius: '50%', backgroundColor: 'var(--primary)', 
+              color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold'
+            }}>
+              👤
+            </div>
+            <span style={{fontWeight: 600, fontSize: '0.9rem', color: 'var(--on-surface)'}}>{user.name}</span>
           </div>
+        ) : (
+          <button 
+            className="btn btn-primary" 
+            style={{padding: '0.4rem 1rem', fontSize: '0.85rem', borderRadius: '20px'}}
+            onClick={() => navigateTo('login')}
+          >
+            Sign In
+          </button>
         )}
         <div className="cart-icon-wrapper" onClick={() => navigateTo('checkout')} style={{backgroundColor: 'var(--surface-low)', padding: '0.5rem', borderRadius: '50%'}}>
           <div className="cart-icon" style={{color: 'var(--on-surface)'}}>

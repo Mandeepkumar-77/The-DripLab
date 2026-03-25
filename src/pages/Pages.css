@@ -306,10 +306,9 @@
   100% { opacity: 1; filter: blur(0px); transform: translateY(0) scale(1); }
 }
 
-/* Italic Stylized Branding */
+/* Stylized Branding */
 .brand-logo {
   font-family: 'Outfit', 'Montserrat', sans-serif;
-  font-style: italic;
   font-weight: 900 !important;
-  letter-spacing: -0.5px;
+  letter-spacing: -1px;
 }
