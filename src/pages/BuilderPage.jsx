@@ -11,14 +11,6 @@ import b3Oat from '../assets/items/b3_oat.png';
 import b4Coconut from '../assets/items/b4_coconut.png';
 
 import s1NoSugar from '../assets/items/s1_nosugar.png';
-import s2Honey from '../assets/items/s2_honey.png';
-import s3Stevia from '../assets/items/s3_stevia.png';
-import s4Sugar from '../assets/items/s4_sugar.png';
-
-import t1Chia from '../assets/items/t1_chia.png';
-import t2Whey from '../assets/items/t2_whey.png';
-import t3Cocoa from '../assets/items/t3_cocoa.png';
-import t4None from '../assets/items/t4_none.png';
 
 const OPTIONS = {
   bases: [
@@ -34,16 +26,16 @@ const OPTIONS = {
     { id: 'f4', name: 'Blueberry', price: 70, image: f4Blueberry, bgColor: '#c5cae9' },
   ],
   sugars: [
-    { id: 's1', name: 'No Sugar', price: 0, image: s1NoSugar, bgColor: '#f5f5f5' },
-    { id: 's2', name: 'Honey', price: 20, image: s2Honey, bgColor: '#ffecb3' },
-    { id: 's3', name: 'Stevia', price: 15, image: s3Stevia, bgColor: '#c8e6c9' },
-    { id: 's4', name: 'Regular', price: 10, image: s4Sugar, bgColor: '#eeeeee' },
+    { id: 's1', name: 'No Sugar', price: 0, icon: '🚫', bgColor: '#f5f5f5' },
+    { id: 's2', name: 'Honey', price: 20, icon: '🍯', bgColor: '#ffecb3' },
+    { id: 's3', name: 'Stevia', price: 15, icon: '🌿', bgColor: '#c8e6c9' },
+    { id: 's4', name: 'Regular', price: 10, icon: '🧂', bgColor: '#eeeeee' },
   ],
   toppings: [
-    { id: 't1', name: 'Chia Seeds', price: 25, image: t1Chia, bgColor: '#d7ccc8' },
-    { id: 't2', name: 'Whey Protein', price: 80, image: t2Whey, bgColor: '#cfd8dc' },
-    { id: 't3', name: 'Cocoa Nibs', price: 40, image: t3Cocoa, bgColor: '#795548' },
-    { id: 't4', name: 'None', price: 0, image: t4None, bgColor: '#f5f5f5' },
+    { id: 't1', name: 'Chia Seeds', price: 25, icon: '⚫', bgColor: '#d7ccc8' },
+    { id: 't2', name: 'Whey Protein', price: 80, icon: '💪', bgColor: '#cfd8dc' },
+    { id: 't3', name: 'Cocoa Nibs', price: 40, icon: '🍫', bgColor: '#795548' },
+    { id: 't4', name: 'None', price: 0, icon: '✖', bgColor: '#f5f5f5' },
   ]
 };
 
