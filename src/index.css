@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Zepto/Zomato Utility Design System with Berry Primary */
+  --primary: #8137b1; /* Premium Berry & Zest Purple */
+  --primary-hover: #6a1b9a;
+  --on-primary: #FFFFFF;
+  
+  --secondary: #2D2D2D;
+  --on-secondary: #FFFFFF;
+  
+  /* Utilities */
+  --background: #F8F9FA;
+  --surface: #FFFFFF;
+  --surface-low: #F1F3F5;
+  
+  --on-surface: #1C1C1C;
+  --on-surface-variant: #6C757D;
+
+  --outline: #E9ECEF;
+  --outline-variant: #DEE2E6;
+
+  --rounded-sm: 4px;
+  --rounded-md: 8px;
+  --rounded-lg: 12px;
+  --rounded-full: 9999px;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--background);
+  color: var(--on-surface);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--on-surface);
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+
+/* Base Responsive Layout */
+.app-container {
+  max-width: 100%;
+  margin: 0 auto;
+  min-height: 100vh;
+  background-color: var(--background);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .app-container {
+    max-width: 480px; /* Force mobile constraint for delivery app feel on desktop */
+    box-shadow: 0 0 20px rgba(0,0,0,0.08);
+    position: relative;
+    left: auto;
+    right: auto;
+  }
+}
+
+/* Utilities */
+.text-center { text-align: center; }
+.text-primary { color: var(--primary); }
+.mb-4 { margin-bottom: 1rem; }
+
+/* Functional Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--rounded-md);
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--on-primary);
+  box-shadow: none; /* Utilitarian */
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--on-surface);
+  border: 1px solid var(--outline-variant);
+}
+
+/* Animations - Subtle & Clean */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+
+/* App-like Sections */
+.section {
+  padding: 1rem;
+  background-color: var(--surface);
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
